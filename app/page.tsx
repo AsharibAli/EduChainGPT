@@ -36,38 +36,26 @@ const EduChainGPT = () => {
   }, [authState.idToken]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center pt-8">
-      <Card className="w-full max-w-lg mb-8">
-        <CardHeader>
-          <CardTitle className="text-2xl font-bold text-center">
-            EduChainGPT
-          </CardTitle>
-          <CardDescription className="text-center">
-            {userInfo
-              ? "You're connected with OCID!"
-              : "Connect with OCID to access the EduChainGPT on EduChain."}
-          </CardDescription>
-          <CardDescription className="text-center">
-            {userInfo
-              ? "Let's Build cool dApps on EduChain."
-              : "Connect with OCID to access the EduChainGPT on EduChain."}
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-col items-center">
-          {userInfo ? (
-            <div className="text-center">
-              <p className="font-semibold">Hello, {userInfo.edu_username}!</p>
-              <p className="text-sm text-gray-600">
-                Wallet: {userInfo.eth_address}
-              </p>
-            </div>
-          ) : (
+    <div
+      className={`min-h-screen flex flex-col ${
+        userInfo ? "" : "items-center pt-8"
+      }`}
+    >
+      {!userInfo ? (
+        <Card className="w-full max-w-lg mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-center">
+              EduChainGPT
+            </CardTitle>
+            <CardDescription className="text-center">
+              Connect with OCID to access the EduChainGPT on EduChain.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-col items-center">
             <LoginButton />
-          )}
-        </CardContent>
-      </Card>
-
-      {userInfo && (
+          </CardContent>
+        </Card>
+      ) : (
         <div className="w-full">
           <flowise-fullchatbot></flowise-fullchatbot>
           <Script
@@ -86,11 +74,6 @@ const EduChainGPT = () => {
                       iconColor: "white",
                       dragAndDrop: true,
                     },
-                    autoWindowOpen: {
-                      autoOpen: true,
-                      openDelay: 2,
-                      autoOpenOnMobile: true,
-                    },
                     chatWindow: {
                       showTitle: true,
                       title: "🤖 EduChainGPT (Build your dApps on EduChain) ✨",
@@ -100,6 +83,7 @@ const EduChainGPT = () => {
                         "Unable to retrieve data from the server. Please try again later.",
                       backgroundColor: "#ffffff",
                       fontSize: 16,
+                      renderHTML: true,
                       botMessage: {
                         backgroundColor: "#008080",
                         textColor: "#ffffff",
@@ -129,11 +113,20 @@ const EduChainGPT = () => {
                       feedback: {
                         color: "#000000",
                       },
+                      dateTimeToggle: {
+                        date: true,
+                        time: true,
+                      },
                       footer: {
                         textColor: "#000000",
                         text: "Build with ❤️ by",
                         company: "EduHub 📚",
                         companyLink: "https://eduhub.dev/",
+                      },
+                      disclaimer: {
+                        title: "Disclaimer",
+                        message:
+                          'By using this chatbot, you agree to the <a target="_blank" href="https://flowiseai.com/terms">Terms & Condition</a>',
                       },
                     },
                   },
