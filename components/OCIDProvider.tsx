@@ -8,7 +8,7 @@ interface OCIDProviderProps {
 }
 
 const opts = {
-  redirectUri: "https://ai.eduhub.dev/redirect",
+  redirectUri: "http://localhost:3000/redirect",
   referralCode: "ASHARIB",
 };
 
