@@ -7,7 +7,7 @@ import Script from "next/script";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "🔥 EduChainGPT on EduChain ✨",
+  title: "EduChainGPT 🔥| AI Assistant for EduChain Community & Developers ✨",
   description:
     "EduChainGPT aims to simplify and build complex Web3 projects. It explain everything in a simple, fun way, helping you learn and build awesome projects quickly and easily on EduChain.",
 };
